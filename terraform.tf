@@ -1,10 +1,20 @@
-terraform { 
-  cloud { 
-    
-    organization = "abjcloud" 
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 3.0"
+    }
+  }
+  provider_meta "aws" {
+    region  = ""
+    profile = ""
+  }
+  cloud {
 
-    workspaces { 
-      name = "s3Website" 
-    } 
-  } 
+    organization = ""
+
+    workspaces {
+      name = ""
+    }
+  }
 }

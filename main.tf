@@ -1,10 +1,6 @@
 resource "aws_s3_bucket" "first_bucket" {
   bucket        = "abcde-140695"
   force_destroy = true
-  tags = {
-    Name        = "MyFirstBucket"
-    Environment = "Dev"
-  }
 }
 
 resource "aws_s3_bucket_public_access_block" "bucket_acl" {
@@ -48,9 +44,4 @@ resource "aws_s3_object" "file_upload" {
   source       = var.html_pages[count.index]
   key          = replace(var.html_pages[count.index], "src/", "")
   content_type = "text/html"
-}
-
-output "website_url" {
-  value       = aws_s3_bucket_website_configuration.s3_site.website_endpoint
-  description = "The URL of the S3 bucket website"
 }
